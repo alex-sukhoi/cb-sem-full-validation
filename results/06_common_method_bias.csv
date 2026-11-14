@@ -1,0 +1,8 @@
+"check","value"
+"Harman single factor: share of variance (< 0.50)",0.323
+"Single-factor CFA: robust CFI (poor fit expected)",0.428
+"Full collinearity VIF: POS (< 3.3)",1.598
+"Full collinearity VIF: ENG (< 3.3)",1.91
+"Full collinearity VIF: BRN (< 3.3)",1.596
+"Full collinearity VIF: JSAT (< 3.3)",2.219
+"Full collinearity VIF: TI (< 3.3)",1.822
