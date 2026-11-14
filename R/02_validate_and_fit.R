@@ -27,6 +27,11 @@ blocks <- list(POS = paste0("pos", 1:4), ENG = paste0("eng", 1:4),
                BRN = paste0("brn", 1:4), JSAT = paste0("js", 1:3),
                TI  = paste0("ti", 1:3))
 r3 <- function(x) round(x, 3)
+vec <- function(x) {  # semTools >= 0.5-7 may return a data frame or a list
+  if (is.data.frame(x)) x <- x[1, , drop = TRUE]
+  if (is.list(x)) x <- sapply(x, as.numeric)
+  x
+}
 save_csv <- function(x, f) write.csv(x, file.path("results", f), row.names = FALSE)
 
 # -----------------------------------------------------------------------------
@@ -45,8 +50,9 @@ d2 <- mahalanobis(cc, colMeans(cc), cov(cc))
 n_outliers <- sum(d2 > qchisq(0.999, df = length(items)))
 cat(sprintf("Screening: max |skew| = %.2f, max |kurtosis| = %.2f, Mardia kurtosis p = %.3g, outliers (p<.001) = %d\n",
             max(abs(desc$skew)), max(abs(desc$kurtosis)), mardia$p.kurt, n_outliers))
-# Univariate values are within |skew| < 2 and |kurtosis| < 7 (Curran et al., 1996),
-# but multivariate normality is rejected -> robust ML (MLR) with FIML for missing data.
+# Univariate values are within |skew| < 2 and |kurtosis| < 7 (Curran et al., 1996).
+# Items are 5-point Likert, so robust ML (MLR) is used as a safeguard, with FIML
+# for the ~1% missing responses.
 
 # -----------------------------------------------------------------------------
 # 2. Measurement model (CFA)
@@ -88,8 +94,8 @@ save_csv(competing, "02_measurement_model_fit.csv")
 # 3-4. Reliability and convergent validity
 # -----------------------------------------------------------------------------
 alpha_vals <- sapply(blocks, function(v) psych::alpha(dat[, v], warnings = FALSE)$total$raw_alpha)
-omega_vals <- semTools::compRelSEM(fit_cfa)            # model-based omega / CR
-ave_vals   <- semTools::AVE(fit_cfa)
+omega_vals <- vec(semTools::compRelSEM(fit_cfa))            # model-based omega / CR
+ave_vals   <- vec(semTools::AVE(fit_cfa))
 reliab <- data.frame(construct = names(blocks), items = lengths(blocks),
                      alpha = r3(alpha_vals), omega_CR = r3(omega_vals[names(blocks)]),
                      AVE = r3(ave_vals[names(blocks)]), sqrt_AVE = r3(sqrt(ave_vals[names(blocks)])))
