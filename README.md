@@ -32,28 +32,28 @@ flowchart LR
 
 | Step | Test | Criterion | Result |
 |---|---|---|---|
-| 1. Screening | Skewness / kurtosis | \|skew\| < 2, \|kurt\| < 7 (Curran et al., 1996) | Max 0.12 / 0.76 ✅ |
-| | Mardia's multivariate kurtosis | p > .05 | p = .033 → robust **MLR** estimator, FIML for missing data |
-| 2. Measurement model | 5-factor CFA | CFI/TLI ≥ .95, RMSEA ≤ .06, SRMR ≤ .08 | CFI .984, TLI .980, RMSEA .036, SRMR .038 ✅ |
-| | Competing models | Hypothesised model fits best | 1-factor CFI .476; 4-factor CFI .872 ✅ |
-| 3. Reliability | Cronbach's α, McDonald's ω | ≥ .70 | α .79–.94, ω .80–.95 ✅ |
-| 4. Convergent validity | AVE | ≥ .50 (or CR > .60 when AVE is .40–.50) | .49–.85; burnout .49 with CR .80 ✅ |
+| 1. Screening | Skewness / kurtosis | \|skew\| < 2, \|kurt\| < 7 (Curran et al., 1996) | Max 0.15 / 1.10 ✅ |
+| | Mardia's multivariate kurtosis | p > .05 | p = .33 ✅; robust **MLR** still used for Likert items, FIML for missing data |
+| 2. Measurement model | 5-factor CFA | CFI/TLI ≥ .95, RMSEA ≤ .06, SRMR ≤ .08 | CFI .973, TLI .967, RMSEA .052, SRMR .041 ✅ |
+| | Competing models | Hypothesised model fits best | 1-factor CFI .428; 4-factor CFI .792 ✅ |
+| 3. Reliability | Cronbach's α, McDonald's ω | ≥ .70 | α .84–.93, ω .84–.93 ✅ |
+| 4. Convergent validity | AVE | ≥ .50 (Fornell & Larcker, 1981) | .57–.82 ✅ |
 | 5. Discriminant validity | Fornell–Larcker | √AVE > inter-construct r | Met for all pairs ✅ |
-| | HTMT | < .85 (Henseler et al., 2015) | Max .58 ✅ |
-| 6. Common-method bias | Harman's single factor | < 50% variance | 29.7% ✅ |
-| | Full collinearity VIF (Kock, 2015) | < 3.3 | 1.77–2.30 ✅ |
+| | HTMT | < .85 (Henseler et al., 2015) | Max .59 ✅ |
+| 6. Common-method bias | Harman's single factor | < 50% variance | 32.3% ✅ |
+| | Full collinearity VIF (Kock, 2015) | < 3.3 | 1.60–2.22 ✅ |
 | 7. Measurement invariance (gender) | Configural → metric → scalar → strict | ΔCFI ≤ .01, ΔRMSEA ≤ .015 (Chen, 2007) | Supported at every level ✅ |
 | 8. Structural model | Paths, R², bootstrapped indirect effects (1,000 resamples) | 95% CI excludes 0 | All 6 paths and 4 indirect effects significant |
 | 9. Alternative models | Fit, AIC, BIC | Lowest AIC/BIC | Hypothesised model preferred |
 
 ### Key structural findings
 
-- Organisational support increases engagement (β = .55) and reduces burnout (β = −.46).
-- Engagement raises satisfaction (β = .50); burnout lowers it (β = −.20).
-- Satisfaction lowers turnover intention (β = −.48); burnout raises it directly (β = .28).
-- The total indirect effect of support on turnover intention is negative (β = −.31,
+- Organisational support increases engagement (β = .51) and reduces burnout (β = −.30).
+- Engagement raises satisfaction (β = .46); burnout lowers it (β = −.37).
+- Satisfaction lowers turnover intention (β = −.45); burnout raises it directly (β = .30).
+- The total indirect effect of support on turnover intention is negative (β = −.24,
   95% CI excludes 0), so support works **through** engagement, burnout and satisfaction.
-- The model explains 34% of the variance in satisfaction and 40% in turnover intention.
+- The model explains 39% of the variance in satisfaction and 41% in turnover intention.
 
 ## Figures
 
